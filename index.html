@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uzzifier</title>
+</head>
+<body>
+    <script>function Uzz(){
+        event.preventDefault();
+        const vowels = new Set(['a', 'e','i','o','u']);
+        let input = document.getElementById("inputword").value;
+        while(input.length > 0){
+            let char = input.slice(-1); // Take the last character
+            input = input.slice(0, -1);
+            if (vowels.has(char.toLowerCase())){
+                let secondLastChar = input.slice(-1); // Get the second-to-last character
+                if (!vowels.has(secondLastChar.toLowerCase())){
+                input += "uzz";
+                break;
+            }
+        }
+    }
+        console.log(input);
+        document.getElementById("Output").textContent = input;
+    }</script>
+    <form>
+        <label for="inword">Word you would like uzzified</label><br>
+        <input type="text" name="input" id="inputword"><br>
+        <input type="submit" value="Uzzify" onclick="Uzz()">
+    </form>
+    <div>
+        <h1 id="Output"></h1>
+    </div>
+</body>
+</html>
